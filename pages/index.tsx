@@ -1,51 +1,151 @@
 import { HighlightWords } from "@/components/highlighter";
-import { text } from "@/lib/text";
-import { Prata } from "next/font/google";
+import { sentences } from "@/lib/sentences";
+import { EB_Garamond, Inter } from "next/font/google";
+import Balancer from "react-wrap-balancer";
 
-const inter = Prata({
-  weight: ["400"],
+const ebGaramond = EB_Garamond({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+const inter = Inter({
+  weight: ["400", "700", "800"],
   subsets: ["latin"],
   style: ["normal"],
 });
 
 export default function Home() {
   return (
-    <main
-      className={`h-screen ${inter.className} text-5xl leading-snug text-justify p-20`}
+    <div
+      className="grid"
+      style={{ gridTemplateColumns: "auto auto auto auto" }}
     >
-      <p className="text-gray-400 relative opacity-50">
-        <HighlightWords text={text} wordsToHighlight={["licht", "schatten"]} />
-      </p>
-      <div className="fixed top-0 left-0 w-full h-full p-[10vw] flex items-center justify-center z-0">
-        <div className="flex w-full items-center aspect-square rounded-full p-4 gap-4 bg-gray-400 text-xs">
-          {/* Licht */}
-          <div className="flex-[230] aspect-square bg-white border-4 border-black rounded-full p-4 gap-4 flex items-center">
-            <div className="flex-[86] aspect-square bg-blue-400 rounded-full p-4 gap-4 flex items-center">
-              Physisch
-            </div>
-            <div className="flex-[144] aspect-square bg-violet-500 rounded-full p-4 gap-4 flex items-center">
-              Metaphorisch
+      <div></div>
+      <main
+        className={`min-h-screen ${inter.className} p-4 pt-8 md:pt-20 md:p-20 max-w-7xl`}
+      >
+        <div className="flex flex-col xl:flex-row">
+          <div className="flex flex-col gap-8 xl:flex-1">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+              <Balancer>
+                Verwendungen der Worte &quot;Licht&quot; und
+                &quot;Schatten&quot; in der Bibel
+              </Balancer>
+            </h1>
+            <div
+              className="grid gap-y-3 gap-x-4 text-lg md:text-xl"
+              style={{ gridTemplateColumns: `auto 1fr`, placeItems: "center" }}
+            >
+              <div className="w-6 h-6 rounded-full bg-black"></div>
+              <div className="w-full">
+                Vorkommnisse von &quot;Schatten&quot;
+              </div>
+              <div
+                className="w-6 h-6 rounded-full bg-white"
+                style={{ boxShadow: "0px 2px 4px rgba(0,0,0,0.4)" }}
+              ></div>
+              <div className="w-full">Vorkommnisse von &quot;Licht&quot;</div>
+              <div className="col-span-2 h-2"></div>
+              <div className="w-6 h-1.5 rounded-full bg-green-500"></div>
+              <div className="w-full">Physische Bedeutung</div>
+              <div className="w-6 h-1.5 rounded-full bg-violet-500"></div>
+              <div className="w-full">Metaphorische Verwendung</div>
             </div>
           </div>
-          {/* Schatten */}
-          <div className="flex-[57] aspect-square bg-black rounded-full p-4 gap-4 flex items-center">
-            <div className="flex-[14] aspect-square bg-blue-400 rounded-full p-4 gap-4 flex items-center">
-              Physisch
+          {/* Visualisierung */}
+          <div className="mt-20 flex w-full items-end rounded-full font-mono xl:flex-3">
+            {/* Schatten */}
+            <div className="flex-[58] aspect-square bg-black rounded-full p-3 gap-2 flex items-center relative">
+              <div className="absolute top-2 left-1/2 text-white transform -translate-x-full text-lg">
+                58
+              </div>
+              <div className="relative flex-[14] aspect-square bg-green-500 rounded-full flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg">
+                  14
+                </div>
+              </div>
+              <div className="relative flex-[44] aspect-square bg-violet-500 rounded-full flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg">
+                  44
+                </div>
+              </div>
             </div>
-            <div className="flex-[43] aspect-square bg-violet-500 rounded-full p-4 gap-4 flex items-center">
-              Metaphorisch
+            {/* Licht */}
+            <div className="flex-[215] aspect-square bg-white shadow-2xl rounded-full p-4 gap-3 flex items-center relative">
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-lg">
+                215
+              </div>
+              <div className="relative flex-[70] aspect-square bg-green-600 rounded-full flex items-center justify-center text-white">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg">
+                  70
+                </div>
+              </div>
+              <div className="relative flex-[145] aspect-square bg-violet-600 rounded-full flex items-center justify-center text-white">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg">
+                  145
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+        <h2 className="mt-20 md:mt-32 font-extrabold tracking-tighter text-2xl md:text-5xl">
+          Relevante Bibelverse, coloriert:
+        </h2>
+        <p
+          className={`${ebGaramond.className} mt-4 md:mt-10 text-2xl leading-normal md:text-5xl md:leading-snug`}
+        >
+          {sentences.map((sentence, index) => {
+            const isLight = sentence.searchWord === "Licht";
+            const bg = isLight ? "bg-gray-200" : "bg-black";
+            const isPhysical = sentence.classification === "physisch";
+            let textColor;
+            if (isLight) {
+              textColor = isPhysical ? "text-green-600" : "text-violet-600";
+            } else {
+              textColor = isPhysical ? "text-green-400" : "text-violet-400";
+            }
+            const highlightColor = isLight ? "text-black" : "text-white";
+            return (
+              <span
+                className={["mx-0.5 first:ml-0 last:mr-0", bg, textColor]
+                  .filter(Boolean)
+                  .join(" ")}
+                key={index}
+              >
+                <HighlightWords
+                  text={sentence.sentence}
+                  wordsToHighlight={[
+                    {
+                      word: "licht",
+                      component: ({ children }) => (
+                        <span className={`${highlightColor} italic`}>
+                          {children}
+                        </span>
+                      ),
+                    },
+                    {
+                      word: "schatten",
+                      component: ({ children }) => (
+                        <span className={`${highlightColor} italic`}>
+                          {children}
+                        </span>
+                      ),
+                    },
+                  ]}
+                />{" "}
+              </span>
+            );
+          })}
+        </p>
+      </main>
+    </div>
   );
 }
 
 /*
-Search_Word Classification  Counts
-0       Licht   metaphorisch     144
-1       Licht       physisch      86
-2    Schatten   metaphorisch      43
+  Search_Word Classification  Counts
+0       Licht   metaphorisch     145
+1       Licht       physisch      70
+2    Schatten   metaphorisch      44
 3    Schatten       physisch      14
 */
