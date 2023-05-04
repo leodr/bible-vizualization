@@ -18,8 +18,9 @@ export default function Home() {
   return (
     <div
       className="grid"
-      style={{ gridTemplateColumns: "auto auto auto auto" }}
+      style={{ gridTemplateColumns: "auto auto auto auto auto" }}
     >
+      <div></div>
       <div></div>
       <main
         className={`min-h-screen ${inter.className} p-4 pt-8 md:pt-20 md:p-20 max-w-7xl`}
