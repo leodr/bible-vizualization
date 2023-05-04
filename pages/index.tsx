@@ -24,16 +24,16 @@ export default function Home() {
       <main
         className={`min-h-screen ${inter.className} p-4 pt-8 md:pt-20 md:p-20 max-w-7xl`}
       >
-        <div className="flex flex-col xl:flex-row">
-          <div className="flex flex-col gap-8 xl:flex-1">
-            <h1 className="text-4xl pr-4 md:pr-0 md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
-              <Balancer>
-                Verwendungen der Worte &quot;Licht&quot; und
-                &quot;Schatten&quot; in der Bibel
-              </Balancer>
-            </h1>
+        <h1 className="text-4xl pr-6 md:pr-60 md:text-6xl font-extrabold tracking-tighter leading-[1.1] md:leading-[1.15]">
+          <Balancer>
+            Verwendungen der Worte &quot;Licht&quot; und &quot;Schatten&quot; in
+            der Bibel
+          </Balancer>
+        </h1>
+        <div className="mt-6 md:mt-20 flex flex-col xl:flex-row">
+          <div className="flex flex-col gap-8">
             <div
-              className="grid gap-y-3 gap-x-4 text-lg md:text-xl"
+              className="grid gap-y-3 gap-x-4 text-lg md:text-xl min-w-[22rem]"
               style={{ gridTemplateColumns: `auto 1fr`, placeItems: "center" }}
             >
               <div className="w-6 h-6 rounded-full bg-black"></div>
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
           </div>
           {/* Visualisierung */}
-          <div className="mt-10 md:mt-20 flex w-full items-end rounded-full font-mono xl:flex-3">
+          <div className="mt-10 md:mt-20 flex w-full items-end rounded-full font-mono">
             {/* Schatten */}
             <div className="flex-[58] aspect-square bg-black rounded-full p-3 gap-2 flex items-center relative">
               <div className="absolute top-2 left-1/2 text-white transform -translate-x-full text-lg">
