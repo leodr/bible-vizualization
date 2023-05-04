@@ -26,7 +26,7 @@ export default function Home() {
       >
         <div className="flex flex-col xl:flex-row">
           <div className="flex flex-col gap-8 xl:flex-1">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+            <h1 className="text-4xl pr-4 md:pr-0 md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
               <Balancer>
                 Verwendungen der Worte &quot;Licht&quot; und
                 &quot;Schatten&quot; in der Bibel
@@ -45,7 +45,7 @@ export default function Home() {
                 style={{ boxShadow: "0px 2px 4px rgba(0,0,0,0.4)" }}
               ></div>
               <div className="w-full">Vorkommnisse von &quot;Licht&quot;</div>
-              <div className="col-span-2 h-2"></div>
+              <div className="col-span-2 md:h-2"></div>
               <div className="w-6 h-1.5 rounded-full bg-green-500"></div>
               <div className="w-full">Physische Bedeutung</div>
               <div className="w-6 h-1.5 rounded-full bg-violet-500"></div>
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
           </div>
           {/* Visualisierung */}
-          <div className="mt-20 flex w-full items-end rounded-full font-mono xl:flex-3">
+          <div className="mt-10 md:mt-20 flex w-full items-end rounded-full font-mono xl:flex-3">
             {/* Schatten */}
             <div className="flex-[58] aspect-square bg-black rounded-full p-3 gap-2 flex items-center relative">
               <div className="absolute top-2 left-1/2 text-white transform -translate-x-full text-lg">
